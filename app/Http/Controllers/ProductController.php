@@ -8,19 +8,24 @@ class ProductController extends Controller
 {
     function index()
     {
-        return "Products list";
+        return view('products.index');
     }
 
     function detail($id, $category = null)
     {
         if ($category != null) {
-            return "Detail product: " . $id . ". With Category: " . $category;
+            return view("products.detail", [
+                'id' => $id,
+                'category' => $category
+            ]);
         } else {
-            return "Detail product: " . $id;
+            $category = "";
+            return view("products.detail", compact('id', 'category'));
         }
     }
 
-    function create(){
+    function create()
+    {
         return "FORM FOR CREATE PRODUCTS";
     }
 }
