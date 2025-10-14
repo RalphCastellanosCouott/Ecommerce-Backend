@@ -64,7 +64,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6e7fdb, #4d4d8f);
+            background: #FF9900;
             color: #333;
             padding: 40px 20px;
         }

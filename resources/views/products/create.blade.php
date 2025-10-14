@@ -45,7 +45,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6e7fdb, #4d4d8f);
+            background: #FF9900;
             display: flex;
             justify-content: center;
             align-items: center;
