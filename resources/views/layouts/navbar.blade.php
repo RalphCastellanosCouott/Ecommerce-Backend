@@ -31,6 +31,9 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.index')}}">{{ __('Admin')}}</a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
