@@ -9,13 +9,25 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
  */
 class BrandFactory extends Factory
-{    
+{
     protected $model = Brand::class;
 
     public function definition()
     {
+        $brands = [
+            'Apple',
+            'Samsung',
+            'Sony',
+            'LG',
+            'Dell',
+            'HP',
+            'Lenovo',
+            'Asus',
+            'Acer',
+            'Microsoft'
+        ];
         return [
-            'name' => fake()->name()
+            'name' => $this->faker->randomElement($brands),
         ];
     }
 }
