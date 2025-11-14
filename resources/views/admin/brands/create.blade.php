@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h2>New Category</h2>
+    <h2>New Brand</h2>
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.categories.store') }}" method="POST">
+            <form action="{{ route('admin.brands.store') }}" method="POST">
                 @csrf
                 @error('name')
                     <small class="text-danger">{{ $message }}</small>
@@ -16,7 +16,7 @@
                 </div>
                 <!-- Botón de Envío-->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Create Category</button>
+                    <button type="submit" class="btn btn-primary">Create Brand</button>
                 </div>
             </form>
         </div>
@@ -26,5 +26,5 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creación de Categoría</title>
+    <title>Creación de Marca</title>
 </head>

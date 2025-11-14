@@ -27,7 +27,7 @@ class BrandFactory extends Factory
             'Microsoft'
         ];
         return [
-            'name' => $this->faker->randomElement($brands),
+            'name' => $this->faker->unique()->randomElement($brands),
         ];
     }
 }

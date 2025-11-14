@@ -4,6 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h3>Products List</h3>
+            <a type="button" class="btn btn-success" href="{{route('admin.products.create')}}">Add New Product</a>
             <table class="table align-items-center mb-0">
                 <thead>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
@@ -33,10 +34,10 @@
                                 {{ $product->price }}
                             </td>
                             <td class="align-middle text-center">
-                                {{ $product->brand_id}}
+                                {{ $product->brand_id }}
                             </td>
                             <td class="align-middle text-center">
-                                {{ $product->category_id}}
+                                {{ $product->category_id }}
                             </td>
                             <td class="align-middle text-center">
                                 {{ $product->created_at }}
@@ -51,6 +52,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $products->links() }}
         </div>
     </div>
 @endsection

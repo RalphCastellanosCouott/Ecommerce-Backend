@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.brands.create');
     }
 
     public function store(Request $request)
@@ -18,18 +19,18 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255|unique:categories,name',
         ]);
 
-        Category::create([
+        Brand::create([
             'name' => $request->get('name')
         ]);
 
-        return redirect()->route('admin.categories.table');
+        return redirect()->route('admin.brands.table');
     }
 
     public function table()
     {
-        $categories = Category::orderBy('id', 'asc')->paginate(10);
-        return view('admin.categories.table', [
-            'categories' => $categories
+        $brands = Brand::orderBy('id', 'asc')->paginate(10);
+        return view('admin.brands.table', [
+            'brands' => $brands
         ]);
     }
 }
