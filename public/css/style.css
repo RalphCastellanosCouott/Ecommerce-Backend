@@ -1,0 +1,342 @@
+/* =========================================================
+   RESET GLOBAL
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   ESTILOS BASE GENERALES
+   ========================================================= */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #E7F7F2;
+    color: #333;
+    margin: 0;
+}
+
+/* Títulos globales */
+h1 {
+    font-size: 2rem;
+    color: #4d4d8f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Inputs globales */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #6e7fdb;
+}
+
+/* Botones globales */
+.btn-primary,
+.submit-btn {
+    background-color: #6e7fdb;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.submit-btn:hover {
+    background-color: #4d4d8f;
+}
+
+/* =========================================================
+   NAVBAR VARIABLES
+   ========================================================= */
+:root {
+    --navbar-height: 70px;
+}
+
+@media (max-width: 575.98px) {
+    :root {
+        --navbar-height: 64px;
+    }
+}
+
+/* =========================================================
+   LOGIN + REGISTER
+   ========================================================= */
+body.login-body,
+body.register-body {
+    padding-top: var(--navbar-height);
+    background: #E7F7F2;
+}
+
+.login-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: #E7F7F2;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.login-card .card-header {
+    background: #6e7fdb;
+    color: #fff;
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.login-card .card-body {
+    padding: 1.5rem;
+}
+
+/* Inputs de login */
+.form-control:focus {
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.15);
+    border-color: #80bdff;
+}
+
+/* Logo */
+.university-logo {
+    max-width: 250px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* =========================================================
+   INDEX – LISTA DE PRODUCTOS
+   ========================================================= */
+header {
+    text-align: center;
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product-card .price {
+    font-size: 1.25rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   CREATE – FORMULARIO DE CREACIÓN
+   ========================================================= */
+.form-container {
+    background-color: #fff;
+    color: #333;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 40px auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* =========================================================
+   DETAIL – DETALLES DEL PRODUCTO
+   ========================================================= */
+.product-detail-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-image {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.product-info {
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.brand-category {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.availability {
+    font-size: 0.95rem;
+    color: green;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.specs {
+    background: #f0f2f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.specs ul {
+    list-style: none;
+}
+
+.specs li {
+    padding: 5px 0;
+    font-size: 0.95rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.buy-btn,
+.add-to-cart-btn {
+    flex: 1;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.buy-btn {
+    background-color: #6e7fdb;
+    color: #fff;
+}
+
+.buy-btn:hover {
+    background-color: #4d4d8f;
+}
+
+.add-to-cart-btn {
+    background: #f0f0f0;
+}
+
+.add-to-cart-btn:hover {
+    background: #ddd;
+}
+
+@media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}

@@ -6,7 +6,7 @@
     </header>
     <section class="product-list">
         <div class="product-card">
-            <img src="https://png.monster/wp-content/uploads/2023/09/PNG.monsterapple-iphone-15-pro-photo%20png.png"
+            <img src="https://www.clevercel.co/cdn/shop/files/Caracteristica_capacidad_iphone_15_2024_1024x1024.png?v=1734104768"
                 alt="Celular 1">
             <h3>iPhone 15</h3>
             <p class="price">$999.99</p>
@@ -42,114 +42,5 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Productos</title>
 </head>
-
-@section('css')
-    <style>
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #FF9900;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #fff;
-            padding-top: 50px;
-            /* Para separar el contenido del borde superior */
-        }
-
-        /* Encabezado */
-        header {
-            text-align: center;
-            width: 100%;
-            background-color: #333;
-            padding: 20px 0;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Contenedor de los productos */
-        .product-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Tarjetas de productos */
-        .product-card {
-            background-color: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transform: scale(1);
-            height: 100%;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        .product-card .price {
-            font-size: 1.25rem;
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        /* Efecto hover */
-        .product-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Responsividad */
-        @media (max-width: 1024px) {
-            .product-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-list {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-@endsection
 
 </html>
