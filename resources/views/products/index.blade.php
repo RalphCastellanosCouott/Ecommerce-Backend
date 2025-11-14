@@ -4,36 +4,48 @@
     <header>
         <h1>Productos Tecnológicos</h1>
     </header>
+
+    {{-- =============== FILTRO POR CATEGORÍAS =============== --}}
+    <div style="max-width: 400px; margin: 0 auto 40px;">
+        <form method="GET" action="{{ url('/') }}">
+            <select name="category" onchange="this.form.submit()">
+                <option value="">Todas las categorías</option>
+                @foreach ($categories as $cat)
+                    <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>
+                        {{ $cat->name }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
+    </div>
+
+    {{-- =============== LISTA DE PRODUCTOS =============== --}}
     <section class="product-list">
-        <div class="product-card">
-            <img src="https://www.clevercel.co/cdn/shop/files/Caracteristica_capacidad_iphone_15_2024_1024x1024.png?v=1734104768"
-                alt="Celular 1">
-            <h3>iPhone 15</h3>
-            <p class="price">$999.99</p>
-        </div>
 
-        <div class="product-card">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/co/2401/gallery/co-galaxy-s24-ultra-clear-case-gp-fps928saatw-thumb-539255955"
-                alt="Celular 2">
-            <h3>Samsung Galaxy S24 Ultra</h3>
-            <p class="price">$799.99</p>
-        </div>
+        @foreach ($products as $product)
+            @php
+                $img = optional($product->images->first())->url ?? 'https://via.placeholder.com/300';
+            @endphp
 
-        <div class="product-card">
-            <img src="https://www.oppo.com/content/dam/oppo/common/mkt/v2-2/reno-12-en/product/860-720-brown-silver.png"
-                alt="Celular 3">
-            <h3>Oppo Reno 12</h3>
-            <p class="price">$649.99</p>
-        </div>
+            <a href="{{ url('products/' . $product->id) }}" class="product-card">
+                <img src="{{ $img }}" alt="Producto">
 
-        <div class="product-card">
-            <img src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/apple-watch-series-9.png"
-                alt="Smartwatch 4">
-            <h3>Apple Watch Series 9</h3>
-            <p class="price">$199.99</p>
-        </div>
+                <h3>{{ $product->name }}</h3>
+
+                <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
+
+                <p class="price">${{ number_format($product->price, 2) }}</p>
+            </a>
+        @endforeach
+
     </section>
+
+    {{-- =============== PAGINACIÓN =============== --}}
+    <div class="pagination-container">
+        {{ $products->links() }}
+    </div>
 @endsection
+
 <!DOCTYPE html>
 <html lang="es">
 

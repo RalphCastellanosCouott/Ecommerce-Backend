@@ -146,10 +146,12 @@ header {
 
 .product-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    /* ← Nuevo */
     gap: 30px;
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: 1400px;
+    /* Un poco más ancho para las 4 columnas */
     margin: 0 auto;
 }
 
@@ -160,6 +162,14 @@ header {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+.product-card * {
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 .product-card:hover {
@@ -339,4 +349,32 @@ textarea {
     .buttons {
         flex-direction: column;
     }
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    /* Separación arriba y abajo */
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    /* espacio entre botones */
+}
+
+.pagination .page-item .page-link {
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
 }

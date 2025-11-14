@@ -8,8 +8,8 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProductController::class,'index']);
-Route::get('products/{id}/{category?}', [ProductController::class,'detail']);
+Route::get('/', [ProductController::class,'index'])->name('page');
+Route::get('products/{id}', [ProductController::class,'detail']);
 
 Auth::routes();
 

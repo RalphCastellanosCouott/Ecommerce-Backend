@@ -4,27 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ImagesProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function index()
+    public function index(Request $request)
     {
-        return view('products.index');
+        // Obtener categorías
+        $categories = Category::orderBy('name')->get();
+
+        // Query con relación de imagen
+        $query = Product::with(['category', 'images']);
+
+        // Filtro por categoría
+        if ($request->has('category') && $request->category != "") {
+            $query->where('category_id', $request->category);
+        }
+
+        // Paginación
+        $products = $query->paginate(12);
+
+        return view('products.index', compact('products', 'categories'));
     }
 
-    function detail($id, $category = null)
+    public function detail($id)
     {
-        if ($category != null) {
-            return view("products.detail", [
-                'id' => $id,
-                'category' => $category
-            ]);
-        } else {
-            $category = "";
-            return view("products.detail", compact('id', 'category'));
-        }
+        $product = Product::with(['brand', 'category', 'images'])->findOrFail($id);
+
+        return view('products.detail', compact('product'));
     }
 
     function create()
@@ -54,6 +63,24 @@ class ProductController extends Controller
         $product->brand_id = $request->get('brand');
 
         $product->save();
+
+        $imagenes = [
+            'https://www.janus.com.co/cdn/shop/files/CXpri-M22-FALCONV930N.jpg?v=1760983129',
+            'https://i.blogs.es/b332b0/xiaomi-tv-a-pro/650_1200.jpg',
+            'https://luma.com.co/cdn/shop/files/image-Photoroom_67_8304b5c1-4e0a-45cf-83ea-ae180cdf4c60.png?v=1758641742',
+            'https://exitocol.vtexassets.com/arquivos/ids/26384317/tablet-lenovo-m11-128gb-8gb-ram-lapiz-tap-pen-plus-folio-case.jpg?v=638727448724230000',
+            'https://images-cdn.ubuy.co.in/653dca4638b3b6351c03b03e-smart-watch-for-android-and-iphone.jpg',
+        ];
+
+        // Escoger una imagen aleatoria
+        $imagenUrl = $imagenes[array_rand($imagenes)];
+
+        // Crear registro en images_product
+        ImagesProduct::create([
+            'product_id' => $product->id,
+            'url' => $imagenUrl
+        ]);
+
         return redirect()->route('admin.products.table');
     }
 

@@ -12,5 +12,20 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
     public $timestamps = true;
-    protected $fillable = ['name','description','price','url_image','category_id'];
+    protected $fillable = ['name', 'description', 'price', 'brand_id', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ImagesProduct::class);
+    }
 }

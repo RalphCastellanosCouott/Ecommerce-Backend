@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class
         ]);
 
-        Product::factory(100)->create();
+        Product::factory(20)->create();
     }
 }

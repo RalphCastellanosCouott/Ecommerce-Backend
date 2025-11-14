@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-md navbar-light shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/products') }}">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="https://unab.edu.co/wp-content/uploads/2022/01/logo-u-vig.png" alt="Logo de la Universidad" style="height: 40px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

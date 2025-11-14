@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ImagesProduct;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,12 +16,21 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->name(),
-            'description'=>fake()->paragraph(),
-            'price'=> fake()->randomFloat(2,10000,1000000),
+            'name' => fake()->name(),
+            'description' => fake()->paragraph(),
+            'price' => fake()->randomFloat(2, 10000, 1000000),
             //'url_image' => fake()->imageUrl(640,480, 'products', true),
             'category_id' => Category::inRandomOrder()->first()->id,
             'brand_id' => Brand::inRandomOrder()->first()->id,
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
+            ImagesProduct::factory()->create([
+                'product_id' => $product->id
+            ]);
+        });
     }
 }
