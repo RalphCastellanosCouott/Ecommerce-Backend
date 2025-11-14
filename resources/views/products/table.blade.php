@@ -4,7 +4,18 @@
     <div class="card">
         <div class="card-body">
             <h3>Products List</h3>
-            <a type="button" class="btn btn-success" href="{{route('admin.products.create')}}">Add New Product</a>
+            @if (session('success'))
+                <div class="alert alert-success text-white">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger text-white">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <a type="button" class="btn btn-success" href="{{ route('admin.products.create') }}">Add New Product</a>
             <table class="table align-items-center mb-0">
                 <thead>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
@@ -13,7 +24,8 @@
                     </th> --}}
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Brand</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category
+                    </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Updated</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
@@ -45,8 +57,16 @@
                             <td class="align-middle text-center">
                                 {{ $product->updated_at }}
                             </td>
-                            <td>
-                                <a style="color: red" href="#">Eliminar</a>
+                            <td class="align-middle text-center">
+                                <form action="{{ route('admin.products.delete', $product->id) }}" method="POST"
+                                    onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link text-danger p-0 m-0"
+                                        style="font-size: 14px;">
+                                        Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

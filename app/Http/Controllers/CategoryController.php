@@ -32,4 +32,19 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function delete($id)
+    {
+        $category = Category::findOrFail($id);
+        // Verificar si tiene productos asociados
+        if ($category->products()->count() > 0) {
+            return redirect()->route('admin.categories.table')
+                ->with('error', 'No se puede eliminar esta marca porque tiene productos asociados.');
+        }
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.table')
+            ->with('success', 'Marca eliminada correctamente.');
+    }
 }

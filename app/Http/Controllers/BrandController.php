@@ -33,4 +33,19 @@ class BrandController extends Controller
             'brands' => $brands
         ]);
     }
+
+    public function delete($id)
+    {
+        $brand = Brand::findOrFail($id);
+        // Verificar si tiene productos asociados
+        if ($brand->products()->count() > 0) {
+            return redirect()->route('admin.brands.table')
+                ->with('error', 'No se puede eliminar esta marca porque tiene productos asociados.');
+        }
+
+        $brand->delete();
+
+        return redirect()->route('admin.brands.table')
+            ->with('success', 'Marca eliminada correctamente.');
+    }
 }

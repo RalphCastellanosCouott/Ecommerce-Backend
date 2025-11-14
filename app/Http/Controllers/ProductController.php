@@ -38,7 +38,7 @@ class ProductController extends Controller
     }
 
     function store(Request $request)
-    {        
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -57,11 +57,22 @@ class ProductController extends Controller
         return redirect()->route('admin.products.table');
     }
 
-    public function table(){
+    public function table()
+    {
 
         $products = Product::orderBy('id', 'asc')->paginate(10);
-        return view('products.table',[
+        return view('products.table', [
             'products' => $products
         ]);
+    }
+
+    public function delete($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->route('admin.products.table')
+            ->with('success', 'Producto eliminado correctamente.');
     }
 }
